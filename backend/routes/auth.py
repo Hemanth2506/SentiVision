@@ -56,8 +56,8 @@ def login(response: Response, credentials: UserLogin, db: Session = Depends(get_
         httponly=True,
         max_age=86400,
         expires=86400,
-        samesite="lax",
-        secure=False  # Set to True in production if HTTPS is configured
+        samesite="none",
+        secure=True
     )
     
     return {
@@ -77,7 +77,12 @@ def logout(response: Response, current_user: User = Depends(get_current_user)):
     """
     Clear access token cookie to log out.
     """
-    response.delete_cookie(key="access_token")
+    response.delete_cookie(
+        key="access_token",
+        httponly=True,
+        samesite="none",
+        secure=True
+    )
     return {"message": "Logout successful"}
 
 
