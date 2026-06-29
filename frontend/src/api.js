@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true, // Crucial for httpOnly cookies
@@ -43,7 +42,7 @@ export const authAPI = {
     const response = await api.post('/auth/signup', { name, email, password });
     return response.data;
   },
-  
+
   login: async (email, password) => {
     const response = await api.post('/auth/login', { email, password });
     if (response.data.access_token) {
@@ -52,7 +51,7 @@ export const authAPI = {
     }
     return response.data;
   },
-  
+
   logout: async () => {
     try {
       await api.post('/auth/logout');
@@ -62,12 +61,12 @@ export const authAPI = {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   },
-  
+
   forgotPassword: async (email) => {
     const response = await api.post('/auth/forgot-password', { email });
     return response.data;
   },
-  
+
   getMe: async () => {
     const response = await api.get('/auth/me');
     return response.data;
@@ -79,7 +78,7 @@ export const analyzerAPI = {
     const response = await api.post('/analyze', { input_text: text });
     return response.data;
   },
-  
+
   analyzeBatch: async (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -97,7 +96,7 @@ export const statsAPI = {
     const response = await api.get('/stats');
     return response.data;
   },
-  
+
   getHistory: async (page = 1, limit = 10, search = '', sentiment = '') => {
     const params = { page, limit };
     if (search) params.search = search;
