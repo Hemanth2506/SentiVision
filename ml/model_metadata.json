@@ -1,0 +1,34 @@
+{
+  "model_name": "SVM (LinearSVC)",
+  "version": "20260629_201906",
+  "accuracy": 0.9837,
+  "precision": 0.984,
+  "recall": 0.9838,
+  "f1_score": 0.9839,
+  "neutral_f1": 1.0,
+  "per_class": {
+    "negative": {
+      "precision": 0.9722,
+      "recall": 0.9813,
+      "f1": 0.9767
+    },
+    "neutral": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "positive": {
+      "precision": 0.9798,
+      "recall": 0.97,
+      "f1": 0.9749
+    }
+  },
+  "training_date": "2026-06-29T20:19:06.016885",
+  "classes": {
+    "0": "Negative",
+    "1": "Neutral",
+    "2": "Positive"
+  },
+  "gate_passed": true,
+  "gate_threshold": 0.75
+}

@@ -1,0 +1,9 @@
+node_modules/ 
+__pycache__/ 
+*.pyc 
+.env 
+dist/ 
+venv/ 
+*.db 
+!ml/model.pkl 
+!ml/vectorizer.pkl 
